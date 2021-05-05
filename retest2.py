@@ -4,11 +4,12 @@ from tkinter import filedialog as fd
 
 fenetre = Tk()
 fenetre.geometry("1920x1080")
+fenetre.state("zoomed")
 fenetre.title("v0.1")
 font1 = ('Comic Sans MS', 40, 'bold italic')
 
-edittable = PhotoImage(file="edittable.png")
-playbook = PhotoImage(file="book.png")
+edittable = PhotoImage(file="Textures/edittable.png")
+playbook = PhotoImage(file="Textures/book.png")
 
 
 def clear():
@@ -38,8 +39,8 @@ def fenjeu():
                      cursor="star", activebackground="gold")
     button1.pack(padx=5, pady=5)
     button2.pack(padx=5, pady=5)
-    button1.place(x=760, y=340, anchor=CENTER)
-    button2.place(x=760, y=480, anchor=CENTER)
+    button1.place(relx=0.5, y=340, anchor="center")
+    button2.place(relx=0.5, y=480, anchor="center")
 
 def editeur():
     clear()
@@ -48,6 +49,10 @@ def editeur():
     backbutton1 = Button(f, bg="red", command=fenedit, text="RETOUR", width=7, height=3)
     backbutton1.pack(padx=4, pady=4)
     backbutton1.place(x=50, y=30)
+
+    input1= LabelFrame(f, text="Description de l'étape", bg='light gray', height = 300, width = 500,)
+    input1.pack()
+    input1.place(relx=0.5, y = 340, anchor = "center")
 
 
 
@@ -66,8 +71,8 @@ def fenedit():
                      cursor="star", activebackground="gold")
     button1.pack(padx=5, pady=5)
     button2.pack(padx=5, pady=5)
-    button1.place(x=790, y=340, anchor=CENTER)
-    button2.place(x=790, y=480, anchor=CENTER)
+    button1.place(relx=0.5, y=340, anchor="center")
+    button2.place(relx=0.5, y=480, anchor="center")
 
 
 def menu():
@@ -79,8 +84,8 @@ def menu():
                      cursor="heart",activebackground="green")
     button1.pack(padx=5, pady=5)
     button2.pack(padx=5, pady=5)
-    button1.place(x=760, y=340, anchor=CENTER)
-    button2.place(x=760, y=480, anchor=CENTER)
+    button1.place(relx=0.5, y=340, anchor="center")
+    button2.place(relx=0.5, y=480, anchor="center")
 
 
 menu()
