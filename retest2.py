@@ -17,25 +17,35 @@ def clear():
     f.configure(bg='teal')
     f.pack()
 
-f=Frame(fenetre)
+f = Frame(fenetre)
 f.configure(bg='teal')
-Label(f,text="Bienvenue dans TextGameEngine", font = font1, bg = "cyan").pack(padx = 4, pady= 4,side = TOP)
 
-button1 = Button(f, command=clear, text ='Jouer à un jeu', image = playbook, compound = BOTTOM, width = 150, cursor='heart')
-button2 = Button(f, command=lambda:[clear(), fenedit()],text ="Accéder à l'éditeur" , image = edittable, compound = BOTTOM, width = 150, cursor="heart")
-button1.pack( padx=5, pady=5)
-button2.pack( padx=5, pady=5)
-button1.place(x=760, y=340, anchor=CENTER)
-button2.place(x=760, y=480, anchor=CENTER)
+def menu():
+    clear()
+    Label(f, text="Bienvenue dans TextGameEngine", font=font1, bg="cyan").pack(padx=4, pady=4, side=TOP)
+    button1 = Button(f, command=fenjeu(), text ='Jouer à un jeu', image = playbook, compound = BOTTOM, width = 150, cursor='heart')
+    button2 = Button(f, command= fenedit(),text ="Accéder à l'éditeur" , image = edittable, compound = BOTTOM, width = 150, cursor="heart")
+    button1.pack( padx=5, pady=5)
+    button2.pack( padx=5, pady=5)
+    button1.place(x=760, y=340, anchor=CENTER)
+    button2.place(x=760, y=480, anchor=CENTER)
+menu()
+
 f.pack(expand=TRUE, fill=BOTH)
 
 def fenjeu():
+    clear()
     Label(f, text="Menu du lecteur d'histoires", font=font1, bg="cyan").pack(padx=10, pady=10)
+    backbutton1 = Button(f, command = menu, text = "retour", width = 5, height = 3)
+    backbutton1.pack(padx = 4, pady = 4)
+    backbutton1.place(x=50, y=30)
 
 def fenedit():
+    clear()
     Label(f, text="Menu de l'éditeur de jeu", font = font1, bg = "cyan").pack(padx = 10,pady=10)
-
-
+    backbutton1 = Button(f, command=menu, text="retour", width=5, height=3)
+    backbutton1.pack(padx=4, pady=4)
+    backbutton1.place(x=50, y=30)
 
 
 fenetre.mainloop()
