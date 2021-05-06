@@ -1,5 +1,6 @@
 from tkinter import *
 from math import *
+import os
 from tkinter import filedialog as fd
 
 fenetre = Tk()
@@ -10,6 +11,11 @@ font1 = ('Comic Sans MS', 40, 'bold italic')
 
 edittable = PhotoImage(file="Textures/edittable.png")
 playbook = PhotoImage(file="Textures/book.png")
+
+
+def tuto():
+    file = "tuto.txt"
+    os.system(file)
 
 
 def clear():
@@ -73,6 +79,10 @@ def fenedit():
     button2.pack(padx=5, pady=5)
     button1.place(relx=0.5, y=340, anchor="center")
     button2.place(relx=0.5, y=480, anchor="center")
+
+    tuto1 = Button(f, bg="gold", text="Tutoriel", command=tuto)
+    tuto1.pack()
+    tuto1.place(relx=0.9, rely = 0.9, anchor="center")
 
 
 def menu():

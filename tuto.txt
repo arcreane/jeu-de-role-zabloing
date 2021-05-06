@@ -1,0 +1,40 @@
+Bienvenue sur le tutoriel de text game engine :
+
+
+differentes parties
+
+
+description du programme de quoi ça parle 
+comment utiliser le jeu
+touches, 
+comment creer une histoire
+comment reprendre l'écriture d'une histoire
+pour plus d'informations : 
+nous contacter, bino@j'ai mail.comme
+
+
+
+
+description du programme de quoi ça parle 
+
+Bonjour et merci d'avoir choisi text game engine pour vous évader le temps d'un instant.
+Ce programme est une interface graphique permettant de créer ses propres histoires à l'aide d'une bibliothèque d'items fournie.
+Des centaines de possibilités sont réalisables et vous pouvez vous arreter en pleine conception pour la reprendre plus tard.
+
+
+comment creer une histoire
+
+Pour créer une nouvelle histoire, rien de plus simple. Il vous suffit de cliquer sur le bouton éponyme.
+Vous allez ensuite arriver sur une page d'édition.
+(expliquer page d'édition)
+
+vous pouvez aussi modifier votre histoire au moment où vous le souhaitez en appuyant sur le bouton "modifier une histoire"
+
+
+Comment jouer à un de vos jeux 
+
+Afin de jouer, il vous suffit de cliquer sur le bouton "jouer à un jeu". L'explorateur de fichier s'ouvre pour que vous puissiez choisir 
+
+Commandes du jeu 
+
+(fleches directionnelles, comment recup un objet...)
