@@ -56,9 +56,24 @@ def editeur():
     backbutton1.pack(padx=4, pady=4)
     backbutton1.place(x=50, y=30)
 
-    input1= LabelFrame(f, text="Description de l'étape", bg='light gray', height = 300, width = 500,)
-    input1.pack()
-    input1.place(relx=0.5, y = 340, anchor = "center")
+    cadre1= LabelFrame(f, text="Votre jeu", bg='light gray', padx=10, pady=10)
+    cadre1.pack()
+    cadre1.place(relx=0.5, rely = 0.5, anchor = "center")
+
+    canvas = Canvas(cadre1, height = 400, width = 600)
+    scrollbar = Scrollbar(cadre1, orient = "vertical", command = canvas.yview)
+    scroll_frame = Frame(canvas)
+    scroll_frame.bind(
+        "<Configure>",
+        lambda e:canvas.configure(scrollregion=canvas.bbox("all"))
+    )
+
+    canvas.create_window((0,0), window = scroll_frame, anchor = "nw")
+    canvas.configure(yscrollcommand = scrollbar.set)
+
+    canvas.pack(side = "left", fill = "both", expand = True)
+    scrollbar.pack(side = "right", fill="y")
+
 
 
 
@@ -96,6 +111,7 @@ def menu():
     button2.pack(padx=5, pady=5)
     button1.place(relx=0.5, y=340, anchor="center")
     button2.place(relx=0.5, y=480, anchor="center")
+
 
 
 menu()
