@@ -12,6 +12,9 @@ font1 = ('Comic Sans MS', 40, 'bold italic')
 edittable = PhotoImage(file="Textures/edittable.png")
 playbook = PhotoImage(file="Textures/book.png")
 
+all_entries = []
+
+
 
 def tuto():
     file = "tuto.txt"
@@ -58,15 +61,25 @@ def editeur():
 
     cadre1= LabelFrame(f, text="Votre jeu", bg='light gray', padx=10, pady=10)
     cadre1.pack()
-    cadre1.place(relx=0.5, rely = 0.5, anchor = "center")
+    cadre1.place(relx=0.5, rely = 0.55, anchor = "center")
 
     canvas = Canvas(cadre1, height = 400, width = 600)
     scrollbar = Scrollbar(cadre1, orient = "vertical", command = canvas.yview)
+    global scroll_frame
     scroll_frame = Frame(canvas)
     scroll_frame.bind(
         "<Configure>",
         lambda e:canvas.configure(scrollregion=canvas.bbox("all"))
     )
+
+    header_frame = Frame(f, bg = "light gray", width = 500, height = 50, pady = 10)
+    header_frame.place(anchor = "center", relx = 0.5, rely = 0.1)
+    header_frame.pack()
+
+    add_bouton = Button(header_frame, text = "ajouter une ligne", command = addBox)
+    add_bouton.pack()
+
+
 
     canvas.create_window((0,0), window = scroll_frame, anchor = "nw")
     canvas.configure(yscrollcommand = scrollbar.set)
@@ -75,6 +88,25 @@ def editeur():
     scrollbar.pack(side = "right", fill="y")
 
 
+def addBox():
+    next_column = len(all_entries)
+    next_row = next_column + 1
+
+    numero = Label(scroll_frame, text=str(next_column + 1))
+    numero.grid(row=next_row, column=0, pady=(0, 10), padx=(0, 10))
+
+    ent1 = Entry(scroll_frame, width="15")
+    ent1.grid(row=next_row, column=1, pady=(0, 10), padx=(0, 10))
+    ent2 = Entry(scroll_frame, width="15")
+    ent2.grid(row=next_row, column=2, pady=(0, 10), padx=(0, 10))
+    ent3 = Entry(scroll_frame, width="5")
+    ent3.grid(row=next_row, column=3, pady=(0, 10), padx=(0, 10))
+    ent4 = Entry(scroll_frame, width="15")
+    ent4.grid(row=next_row, column=4, pady=(0, 10), padx=(0, 10))
+    ent5 = Entry(scroll_frame, width="5")
+    ent5.grid(row=next_row, column=5, pady=(0, 10), padx=(0, 10))
+
+    all_entries.append(ent1)
 
 
 
