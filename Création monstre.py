@@ -140,23 +140,33 @@ def mobedit():
     popup.geometry("600x400")
     popup.title("Mob creator")
     popframe=Frame(popup)
-
-    Label(popframe, text="Bienvenue dans TextGameEngine", font=font1, bg="cyan").pack(padx=4, pady=4, side=TOP)
+    popframe.pack(expand=TRUE, fill=BOTH)
 
     champLabel = Label(popframe, text="Nom du monstre : ")
     champLabel.pack()
-    global maZone
-    maZone = Entry(popframe, width=40)
-    maZone.insert(0, "Entrez le nom ici")
-    maZone.pack()
-    monBouton = Button(popframe, text="Valider", command=valider)
+    global maZoneNom
+    maZoneNom = Entry(popframe, width=40)
+    maZoneNom.insert(0, "Entrez le nom ici")
+    maZoneNom.pack()
+    monBouton = Button(popframe, text="Valider", command=validerNom)
     monBouton.pack()
-    popframe.pack(bg="red", expand=TRUE, fill=BOTH)
+    champLabel = Label(popframe, text="PDV du monstre : ")
+    champLabel.pack()
+    global maZoneVie
+    maZoneVie = Entry(popframe, width=40)
+    maZoneVie.insert(0, "Entrez le montant ici")
+    maZoneVie.pack()
+    monBouton = Button(popframe, text="Valider", command=validerVie)
+    monBouton.pack()
 
 
-def valider():
-    Statmob = maZone.get()
-    print (Statmob)
+def validerNom():
+    Namemob = maZoneNom.get()
+    print(Namemob)
+
+def validerVie():
+    Healthmob = maZoneVie.get()
+    print(Healthmob)
 
 
 def menu():
