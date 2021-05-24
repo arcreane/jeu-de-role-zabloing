@@ -1,0 +1,59 @@
+from tkinter import *
+
+titre_label = tk.Label(Frame1)
+titre_label.place(relx=0.017, rely=0.133, height=51, width=293)
+titre_label.configure(background="#3aad4b", disabledforeground="#a3a3a3", font="-family {Segoe UI} -size 16 -weight bold -underline 1", foreground="#000000", text='''Création de l'histoire''')
+
+save_bouton = tk.Button(Frame1, command=showEntries)
+save_bouton.place(relx=0.826, rely=0.267, height=34, width=67)
+save_bouton.configure(activebackground="#ececec", activeforeground="#000000", background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black", pady="0", text='Save')
+
+add_boutton = tk.Button(Frame1, command=addBox)
+add_boutton.place(relx=0.694, rely=0.133, height=24, width=47)
+add_boutton.configure(activebackground="#ececec", activeforeground="#000000", background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black", pady="0", text= 'add')
+
+del_boutton = tk.Button(Frame1)
+del_boutton.place(relx=0.694, rely=0.533, height=24, width=47)
+del_boutton.configure(activebackground="#ececec", activeforeground="#000000", background="#d9d9d9", disabledforeground="#a3a3a3", font="-family {Segoe UI} -size 10", foreground="#000000", highlightbackground="#d9d9d9", highlightcolor="black", pady="0", text= 'del')
+
+container = ttk.Frame(root)
+
+canvas = tk.Canvas(container)
+canvas.configure(background="#3aad4b", borderwidth="2", insertbackground="black", relief="ridge", selectbackground="blue", selectforeground="white")
+scrollbar = ttk.Scrollbar(container, orient="vertical", command=canvas.yview)
+scrollable_frame = ttk.Frame(canvas)
+scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+canvas.configure(yscrollcommand=scrollbar.set)
+container.place(relx=0.031, rely=0.188, relheight=0.777, relwidth=0.942)
+canvas.pack(side="left", fill="both", expand=True)
+scrollbar.pack(side="right", fill="y")
+
+# for i in range(50):
+#     ttk.Label(scrollable_frame, text=("Sample scrolling label" + str(i))).grid(row=i, column=0, pady=(0, 10))
+
+Label2 = tk.Label(scrollable_frame)
+Label2.grid(row=0, column=0, pady=(0, 10), padx=(0, 10))
+Label2.configure(background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000", text='Id')
+
+
+Label3 = tk.Label(scrollable_frame)
+Label3.grid(row=0, column=1, pady=(0, 10), padx=(0, 10))
+Label3.configure(background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000", text='question')
+
+Label4 = tk.Label(scrollable_frame)
+Label4.grid(row=0, column=2, pady=(0, 10), padx=(0, 10))
+Label4.configure(background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000", text='premier choix')
+
+Label5 = tk.Label(scrollable_frame)
+Label5.grid(row=0, column=3, pady=(0, 10), padx=(0, 10))
+Label5.configure(background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000", text='ada1')
+
+Label6 = tk.Label(scrollable_frame)
+Label6.grid(row=0, column=4, pady=(0, 10), padx=(0, 10))
+Label6.configure(background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000", text='deuxieme choix')
+
+Label7 = tk.Label(scrollable_frame)
+Label7.grid(row=0, column=5, pady=(0, 10), padx=(0, 10))
+Label7.configure(background="#d9d9d9", disabledforeground="#a3a3a3", foreground="#000000", text='ada2')
+
