@@ -1,5 +1,5 @@
 from tkinter import *
-from math import *
+import csv
 import os
 from tkinter import filedialog as fd
 
@@ -117,33 +117,76 @@ def editeur(): #editeur de jeu
 
 
 
-
 checks = [] #liste des boutons cochés
 
 def delete_row():
     for rowno, row in reversed(list(enumerate(all_entries))):
         print(all_entries[rowno].val.get())
+        l = list(scroll_frame.grid_slaves(row=rowno))
         if all_entries[rowno].val.get() == 1:
-            for i in row:
-                i.destroy()
-                all_entries.pop(rowno)
+            for w in l:
+                w.grid_forget()
 
 i=1
 
 
-def mobedit():  # fenetre création de mob
+def addBox(): #bouton pour ajouter une ligne au tableau
 
+    next_column = len(all_entries)
+    next_row = next_column + 1
+
+    global checks
+    var = IntVar()
+
+    numero = Label(scroll_frame, text=str(next_row))
+    numero.grid(row=next_row, column=0, pady=(0, 10), padx=(0, 10))
+
+    ent1 = Entry(scroll_frame, width="25")
+    ent1.grid(row=next_row, column=1, pady=(0, 10), padx=(0, 10))
+    ent2 = Entry(scroll_frame, width="20")
+    ent2.grid(row=next_row, column=2, pady=(0, 10), padx=(0, 10))
+    ent3 = Entry(scroll_frame, width="5")
+    ent3.grid(row=next_row, column=3, pady=(0, 10), padx=(0, 10))
+    ent4 = Entry(scroll_frame, width="20")
+    ent4.grid(row=next_row, column=4, pady=(0, 10), padx=(0, 10))
+    ent5 = Entry(scroll_frame, width="5")
+    ent5.grid(row=next_row, column=5, pady=(0, 10), padx=(0, 10))
+
+
+    def rownumber():  # on chope la ligne du bouton appuyé
+        global rowinfo
+        rowinfo = boutMob.grid_info()["row"]
+        global f2
+        champEtape = Label(f2, text="Etape actuelle : " +str(rowinfo))
+        champEtape.pack( pady=10)
+        champEtape.place(relx = 0.9, rely = 0.9, anchor = "center")
+
+
+    boutMob = Button(scroll_frame, text = "MOBS", width = 10, command = lambda:[mobedit(),rownumber(),print(rowinfo)])
+    boutMob.grid(row = next_row, column = 6, pady=(0, 10), padx=(0, 10))
+    boutItem = Button(scroll_frame, text = "ITEMS", width=10, command = lambda  :[itemedit(), rownumber()])
+    boutItem.grid(row = next_row, column = 7, pady=(0, 10), padx=(0, 10))
+
+    delcheck = Checkbutton(scroll_frame, variable = var)
+    delcheck.grid(row = next_row, column = 8, pady = (0,10), padx = (0,5))
+
+    delcheck.val = var
+    checks.append(delcheck)
+    all_entries.append(delcheck)
+
+
+def mobedit():  # fenetre création de mob
+    global rowinfo
     fenmonstre = Tk()
     fenmonstre.geometry("900x500")
     fenmonstre.title("Bestiaire")
+    global f2
     f2 = Frame(fenmonstre)
     f2.configure(bg="teal")
     f2.pack(expand=TRUE, fill=BOTH)
 
     Label(f2, text="Menu de création de monstres", font=font1, bg="cyan").pack(padx=10, pady=10)
 
-    champEtape = Label(f2, text="Etape actuelle : ")
-    champEtape.pack(pady=10)
     champNom = Label(f2, text="Nom du monstre : ")
     champNom.pack(pady=10)
     maZone = Entry(f2, width=30)
@@ -174,6 +217,7 @@ def itemedit():  # fenetre création d'item
     fenitem = Tk()
     fenitem.geometry("900x500")
     fenitem.title("Armurerie")
+    global f2
     f2 = Frame(fenitem)
     f2.configure(bg="teal")
     f2.pack(expand=TRUE, fill=BOTH)
@@ -181,12 +225,10 @@ def itemedit():  # fenetre création d'item
     Label(f2, text="Menu de création des items", font=font1, bg="cyan").pack(padx=10, pady=10)
 
 
-    champEtape = Label(f2, text="Etape actuelle : ")
-    champEtape.pack(pady=10)
     champNom = Label(f2, text="Nom de l'item : ")
     champNom.pack(pady=10)
     maZone = Entry(f2, width=30)
-    maZone.insert(0, "Entrez le nom ici'")
+    maZone.insert(0, "Entrez le nom ici")
     maZone.pack(pady=10)
     champAtk = Label(f2, text="Attaque de l'item : ")
     champAtk.pack(pady=10)
@@ -207,48 +249,6 @@ def itemedit():  # fenetre création d'item
 
     boutValider = Button(f2, text="Valider", command=valider)
     boutValider.pack(pady=10)
-
-
-def addBox(): #bouton pour ajouter une ligne au tableau
-
-    next_column = len(all_entries)
-    next_row = next_column + 1
-
-    global checks
-    var = IntVar()
-
-    numero = Label(scroll_frame, text=str(next_row))
-    numero.grid(row=next_row, column=0, pady=(0, 10), padx=(0, 10))
-
-    ent1 = Entry(scroll_frame, width="25")
-    ent1.grid(row=next_row, column=1, pady=(0, 10), padx=(0, 10))
-    ent2 = Entry(scroll_frame, width="20")
-    ent2.grid(row=next_row, column=2, pady=(0, 10), padx=(0, 10))
-    ent3 = Entry(scroll_frame, width="5")
-    ent3.grid(row=next_row, column=3, pady=(0, 10), padx=(0, 10))
-    ent4 = Entry(scroll_frame, width="20")
-    ent4.grid(row=next_row, column=4, pady=(0, 10), padx=(0, 10))
-    ent5 = Entry(scroll_frame, width="5")
-    ent5.grid(row=next_row, column=5, pady=(0, 10), padx=(0, 10))
-
-    def rownumber():  # on chope la ligne du bouton appuyé
-        global rowinfo
-        rowinfo = boutMob.grid_info()["row"]
-
-
-    boutMob = Button(scroll_frame, text = "MOBS", width = 10, command = lambda:[mobedit(),rownumber()])
-    boutMob.grid(row = next_row, column = 6, pady=(0, 10), padx=(0, 10))
-    boutItem = Button(scroll_frame, text = "ITEMS", width=10, command = lambda  :[itemedit(), rownumber()])
-    boutItem.grid(row = next_row, column = 7, pady=(0, 10), padx=(0, 10))
-
-    delcheck = Checkbutton(scroll_frame, variable = var)
-    delcheck.grid(row = next_row, column = 8, pady = (0,10), padx = (0,5))
-
-    delcheck.val = var
-    checks.append(delcheck)
-
-    all_entries.append(delcheck)
-
 
 
 def fenedit():
