@@ -14,10 +14,21 @@ playbook = PhotoImage(file="Textures/book.png")
 
 all_entries = []
 
+def fentuto():
+    fentuto = Tk()
+    fentuto.geometry("900x500")
+    fentuto.title("Tuto")
+    f3 = Frame(fentuto)
+    f3.configure(bg="teal")
+    f3.pack(expand=TRUE, fill=BOTH)
 
-def tuto():
-    file = "tuto.txt"
-    os.system(file)
+
+    file = open("tuto.txt")
+    data8 = file.read()
+    file.close()
+    Results=Text(f3, height=400, width=800)
+    Results.insert("1.0",data8)
+    Results.pack()
 
 
 def clear(): #fonction pour nettoyer la fenetre
@@ -294,7 +305,7 @@ def fenedit():
     button1.place(relx=0.5, y=340, anchor="center")
     button2.place(relx=0.5, y=480, anchor="center")
 
-    tuto1 = Button(f, bg="gold", text="Tutoriel", command=tuto)
+    tuto1 = Button(f, bg="gold", text="Tutoriel", command=fentuto)
     tuto1.pack()
     tuto1.place(relx=0.9, rely = 0.9, anchor="center")
 
