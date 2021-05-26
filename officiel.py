@@ -129,9 +129,9 @@ def delete_row():
 
 i=1
 
-
+listeetapes = []
 def addBox(): #bouton pour ajouter une ligne au tableau
-
+    etapes = []
     next_column = len(all_entries)
     next_row = next_column + 1
 
@@ -141,7 +141,7 @@ def addBox(): #bouton pour ajouter une ligne au tableau
     numero = Label(scroll_frame, text=str(next_row))
     numero.grid(row=next_row, column=0, pady=(0, 10), padx=(0, 10))
 
-    ent1 = Entry(scroll_frame, width="25")
+    ent1 = Button(scroll_frame, text = "Description", command= description)
     ent1.grid(row=next_row, column=1, pady=(0, 10), padx=(0, 10))
     ent2 = Entry(scroll_frame, width="20")
     ent2.grid(row=next_row, column=2, pady=(0, 10), padx=(0, 10))
@@ -174,6 +174,30 @@ def addBox(): #bouton pour ajouter une ligne au tableau
     checks.append(delcheck)
     all_entries.append(delcheck)
 
+def description():
+    global rowinfo
+    fendesc = Tk()
+    fendesc.geometry("900x500")
+    fendesc.title("Description de l'étape")
+    global f2
+    f2 = Frame(fendesc)
+    f2.configure(bg="teal")
+    f2.pack(expand=TRUE, fill=BOTH)
+
+    Label(f2, text="Description", font=font1, bg="cyan").pack(padx=10, pady=10)
+    zonedesc = Text(f2)
+    zonedesc.pack(pady = 10)
+    zonedesc.place(anchor = "center", relx = 0.5, rely= 0.5,height = "300", width = "400")
+
+    def valider():
+        textdesc = zonedesc.get("1.0", END)
+        print(textdesc)
+
+    boutValider = Button(f2, text="Valider", command=valider)
+    boutValider.pack(pady=10)
+    boutValider.place(relx = 0.5, rely = 0.9)
+
+
 
 def mobedit():  # fenetre création de mob
     global rowinfo
@@ -204,10 +228,11 @@ def mobedit():  # fenetre création de mob
     mobATK.pack(pady=10)
 
     def valider():
-        mobetape = "etape du monstre"
+        mobetape = rowinfo
         mobname = maZone.get()
         mobvie = mobVie.get()
         mobatk = mobATK.get()
+
 
     boutValider = Button(f2, text="Valider", command=valider)
     boutValider.pack(pady=10)
