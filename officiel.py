@@ -1,5 +1,4 @@
 from tkinter import *
-from csv import DictWriter
 from csv import *
 from tkinter import filedialog as fd
 
@@ -145,20 +144,19 @@ def saveinput():  # enregistrer les données dans le CSV
     choix2 = str(ent4.get())
     lien2 = ent5.get()
 
-    for i in range(len(all_entries)):
-        with open("histoire1.csv", 'a', newline='', encoding = 'UTF-8') as f: #ecrit dans le CSV les differentes variables
-            dict_writer = DictWriter(f, fieldnames=['etape', 'description', 'choix1', 'lien1', 'choix2',
+    with open("histoire1.csv", 'a', newline='', encoding = 'UTF-8') as f: #ecrit dans le CSV les differentes variables
+        dict_writer = DictWriter(f, fieldnames=['etape', 'description', 'choix1', 'lien1', 'choix2',
                                                         'lien2', 'mobs', 'items'])
-            dict_writer.writeheader()
-            dict_writer.writerow({
-                'etape' : i+1,
-                'description' : textdesc,
-                'choix1' : choix1,
-                'lien1' : lien1,
-                'choix2' : choix2,
-                'lien2' : lien2,
-                'mobs' : mobinfo,
-                'items' : iteminfo,
+
+        dict_writer.writerow({
+            'etape' : rowinfo,
+            'description' : textdesc,
+            'choix1' : choix1,
+            'lien1' : lien1,
+            'choix2' : choix2,
+            'lien2' : lien2,
+            'mobs' : mobinfo,
+            'items' : iteminfo,
             })
 
 checks = [] #liste des boutons cochés
