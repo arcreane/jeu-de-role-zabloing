@@ -1,6 +1,7 @@
 from tkinter import *
 from csv import *
 from tkinter import filedialog as fd
+from game import gamewindow
 
 fenetre = Tk()
 fenetre.geometry("1920x1080")
@@ -11,9 +12,9 @@ font1 = ('Comic Sans MS', 40, 'bold italic')
 edittable = PhotoImage(file="Textures/edittable.png")
 playbook = PhotoImage(file="Textures/book.png")
 
-global rowinfo
-global mobinfo
-global iteminfo
+global rowinfo, mobinfo, iteminfo
+etape = 1
+
 all_entries = []
 mobinfo = []
 iteminfo = []
@@ -48,22 +49,6 @@ f.configure(bg='teal')
 f.pack(expand=TRUE, fill=BOTH)
 
 
-def fenjeu(): #menu pour jouer ou editer une histoire
-    clear()
-    Label(f, text="Menu du lecteur d'histoires", font=font1, bg="cyan").pack(padx=10, pady=10)
-
-    backbutton1 = Button(f, bg="red", command=menu, text="RETOUR", width=7, height=3)
-    backbutton1.pack(padx=4, pady=4)
-    backbutton1.place(x=50, y=30)
-
-    button1 = Button(f, command= fd.askopenfile, text='Jouer à une histoire', width=100, height=5,
-                     cursor='star', activebackground="gold")
-    button2 = Button(f, command=fd.askopenfile, text="Continuer une partie", width=100, height=5,
-                     cursor="star", activebackground="gold")
-    button1.pack(padx=5, pady=5)
-    button2.pack(padx=5, pady=5)
-    button1.place(relx=0.5, y=340, anchor="center")
-    button2.place(relx=0.5, y=480, anchor="center")
 
 def editeur(): #editeur de jeu
     clear()
@@ -133,7 +118,6 @@ def editeur(): #editeur de jeu
 
     canvas.pack(side = "left", fill = "both", expand = True)
     scrollbar.pack(side = "right", fill="y")
-
 
 
 
@@ -352,6 +336,23 @@ def fenedit(): #pour acceder à l'éditeur
     tuto1 = Button(f, bg="gold", text="Tutoriel", command=fentuto)
     tuto1.pack()
     tuto1.place(relx=0.9, rely = 0.9, anchor="center")
+
+def fenjeu(): #menu pour jouer ou editer une histoire
+    clear()
+    Label(f, text="Menu du lecteur d'histoires", font=font1, bg="cyan").pack(padx=10, pady=10)
+
+    backbutton1 = Button(f, bg="red", command=menu, text="RETOUR", width=7, height=3)
+    backbutton1.pack(padx=4, pady=4)
+    backbutton1.place(x=50, y=30)
+
+    button1 = Button(f, command= gamewindow, text='Jouer à une histoire', width=100, height=5,
+                     cursor='star', activebackground="gold")
+    button2 = Button(f, command=fd.askopenfile, text="Continuer une partie", width=100, height=5,
+                     cursor="star", activebackground="gold")
+    button1.pack(padx=5, pady=5)
+    button2.pack(padx=5, pady=5)
+    button1.place(relx=0.5, y=340, anchor="center")
+    button2.place(relx=0.5, y=480, anchor="center")
 
 
 def menu(): #menu d'accueil principal

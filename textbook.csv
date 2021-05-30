@@ -1,0 +1,3 @@
+1,"Vous vous reveillez dans une chambre noire, et vous voyez une porte avec de la lumiere derriere. Que voulez-vous faire ? ","Se rendormir","end","Ouvrir la porte","2",,
+2,"Vous ouvrez la porte et decouvrez devant vous votre neveu disparu","le saluer","3","le dropkick","end",,
+3,"vous etes arrives a la fin de cette histoire, merci!","quitter l'histoire","end",,,,
