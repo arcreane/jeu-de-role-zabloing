@@ -19,7 +19,7 @@ def gamewindow():
     backbutton1.pack(padx=4, pady=4)
     backbutton1.place(x=50, y=30)
 
-    with open('textbook.csv', newline='', encoding = 'ASCII') as f:
+    with open('textbook.csv', newline='', encoding = 'utf-8-sig') as f:
         reader = csv.reader(f)
         biglist = list(reader)
 

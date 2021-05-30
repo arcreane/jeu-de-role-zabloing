@@ -6,7 +6,7 @@ differentes parties
 
 description du programme de quoi ça parle 
 comment utiliser le jeu
-touches, 
+
 comment creer une histoire
 comment reprendre l'écriture d'une histoire
 pour plus d'informations : 
