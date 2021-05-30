@@ -1,6 +1,6 @@
 from tkinter import *
-import csv
-import os
+from csv import DictWriter
+from csv import *
 from tkinter import filedialog as fd
 
 fenetre = Tk()
@@ -12,7 +12,13 @@ font1 = ('Comic Sans MS', 40, 'bold italic')
 edittable = PhotoImage(file="Textures/edittable.png")
 playbook = PhotoImage(file="Textures/book.png")
 
+global rowinfo
+global mobinfo
+global iteminfo
 all_entries = []
+mobinfo = []
+iteminfo = []
+
 
 def fentuto():
     fentuto = Tk()
@@ -22,8 +28,7 @@ def fentuto():
     f3.configure(bg="teal")
     f3.pack(expand=TRUE, fill=BOTH)
 
-
-    file = open("tuto.txt")
+    file = open("tuto.txt") #ouvre le fichier txt et prends le contenu pour l'afficher
     data8 = file.read()
     file.close()
     Results=Text(f3, height=400, width=800)
@@ -75,13 +80,14 @@ def editeur(): #editeur de jeu
 
     canvas = Canvas(cadre1, height = 400, width = 800) #cadre qui contient les zones d'input
     scrollbar = Scrollbar(cadre1, orient = "vertical", command = canvas.yview)
-    global scroll_frame
+    global scroll_frame #setup de la grille qui peut se scroll
     scroll_frame = Frame(canvas)
     scroll_frame.bind(
         "<Configure>",
         lambda e:canvas.configure(scrollregion=canvas.bbox("all"))
     )
 
+    #nom des colonnes de contenus
     titre1 = Label(scroll_frame)
     titre1.grid(row=0, column=0, pady=(0, 10), padx=(0, 10))
     titre1.configure(text='ID')
@@ -110,6 +116,7 @@ def editeur(): #editeur de jeu
     titre7.grid(row=0, column = 8, pady=(0, 10), padx=(0, 10))
     titre7.configure(text='Suppr.')
 
+
     #frame au dessus pour les options
     header_frame = Frame(f, bg = "light gray", width = 500, height = 50, pady = 10)
     header_frame.place(anchor = "center", relx = 0.5, rely = 0.1)
@@ -119,6 +126,8 @@ def editeur(): #editeur de jeu
     add_bouton.pack(pady = 5)
     del_bouton = Button(header_frame, text="supprimer une ligne", command=delete_row)
     del_bouton.pack(pady = 5)
+    save_bouton = Button(header_frame, text="Sauvegarder", command= saveinput)
+    save_bouton.pack(pady = 5)
 
     canvas.create_window((0,0), window = scroll_frame, anchor = "nw")
     canvas.configure(yscrollcommand = scrollbar.set)
@@ -128,9 +137,33 @@ def editeur(): #editeur de jeu
 
 
 
+
+def saveinput():  # enregistrer les données dans le CSV
+
+    choix1 = str(ent2.get())
+    lien1 = ent3.get()
+    choix2 = str(ent4.get())
+    lien2 = ent5.get()
+
+    for i in range(len(all_entries)):
+        with open("histoire1.csv", 'a', newline='', encoding = 'UTF-8') as f: #ecrit dans le CSV les differentes variables
+            dict_writer = DictWriter(f, fieldnames=['etape', 'description', 'choix1', 'lien1', 'choix2',
+                                                        'lien2', 'mobs', 'items'])
+            dict_writer.writeheader()
+            dict_writer.writerow({
+                'etape' : i+1,
+                'description' : textdesc,
+                'choix1' : choix1,
+                'lien1' : lien1,
+                'choix2' : choix2,
+                'lien2' : lien2,
+                'mobs' : mobinfo,
+                'items' : iteminfo,
+            })
+
 checks = [] #liste des boutons cochés
 
-def delete_row():
+def delete_row(): #est sensé verfier si une case est cochée sur une ligne, et retourne 1 si coché
     for rowno, row in reversed(list(enumerate(all_entries))):
         print(all_entries[rowno].val.get())
         l = list(scroll_frame.grid_slaves(row=rowno))
@@ -138,21 +171,26 @@ def delete_row():
             for w in l:
                 w.grid_forget()
 
-i=1
 
-listeetapes = []
+
 def addBox(): #bouton pour ajouter une ligne au tableau
-    etapes = []
-    next_column = len(all_entries)
-    next_row = next_column + 1
+
+    presentrow = len(all_entries)
+    next_row = presentrow + 1
 
     global checks
+    global ent2
+    global ent3
+    global ent4
+    global ent5
     var = IntVar()
 
     numero = Label(scroll_frame, text=str(next_row))
     numero.grid(row=next_row, column=0, pady=(0, 10), padx=(0, 10))
 
-    ent1 = Button(scroll_frame, text = "Description", command= description)
+    #differentes zones d'input
+
+    ent1 = Button(scroll_frame, text = "Description", command= lambda :[description(), rownumber()])
     ent1.grid(row=next_row, column=1, pady=(0, 10), padx=(0, 10))
     ent2 = Entry(scroll_frame, width="20")
     ent2.grid(row=next_row, column=2, pady=(0, 10), padx=(0, 10))
@@ -164,7 +202,7 @@ def addBox(): #bouton pour ajouter une ligne au tableau
     ent5.grid(row=next_row, column=5, pady=(0, 10), padx=(0, 10))
 
 
-    def rownumber():  # on chope la ligne du bouton appuyé
+    def rownumber():  # on trouve la ligne du bouton appuyé
         global rowinfo
         rowinfo = boutMob.grid_info()["row"]
         global f2
@@ -173,11 +211,12 @@ def addBox(): #bouton pour ajouter une ligne au tableau
         champEtape.place(relx = 0.9, rely = 0.9, anchor = "center")
 
 
-    boutMob = Button(scroll_frame, text = "MOBS", width = 10, command = lambda:[mobedit(),rownumber(),print(rowinfo)])
+    boutMob = Button(scroll_frame, text = "MOBS", width = 10, command = lambda:[mobedit(),rownumber()])
     boutMob.grid(row = next_row, column = 6, pady=(0, 10), padx=(0, 10))
     boutItem = Button(scroll_frame, text = "ITEMS", width=10, command = lambda  :[itemedit(), rownumber()])
     boutItem.grid(row = next_row, column = 7, pady=(0, 10), padx=(0, 10))
 
+    #tentative pour le bouton delete row
     delcheck = Checkbutton(scroll_frame, variable = var)
     delcheck.grid(row = next_row, column = 8, pady = (0,10), padx = (0,5))
 
@@ -185,7 +224,7 @@ def addBox(): #bouton pour ajouter une ligne au tableau
     checks.append(delcheck)
     all_entries.append(delcheck)
 
-def description():
+def description(): #fenetre pour rentrer la description d'une étape
     global rowinfo
     fendesc = Tk()
     fendesc.geometry("900x500")
@@ -201,8 +240,9 @@ def description():
     zonedesc.place(anchor = "center", relx = 0.5, rely= 0.5,height = "300", width = "400")
 
     def valider():
-        textdesc = zonedesc.get("1.0", END)
-        print(textdesc)
+        global textdesc
+        textdesc = str(zonedesc.get("1.0", "end-1c"))
+
 
     boutValider = Button(f2, text="Valider", command=valider)
     boutValider.pack(pady=10)
@@ -239,10 +279,13 @@ def mobedit():  # fenetre création de mob
     mobATK.pack(pady=10)
 
     def valider():
+        global mobinfo
+        mobinfo = []
         mobetape = rowinfo
         mobname = maZone.get()
         mobvie = mobVie.get()
         mobatk = mobATK.get()
+        mobinfo.extend([mobetape,mobname,mobvie,mobatk])
 
 
     boutValider = Button(f2, text="Valider", command=valider)
@@ -278,16 +321,19 @@ def itemedit():  # fenetre création d'item
     itemDEF.pack(pady=10)
 
     def valider():
-        itemetape = "etape de l'item"
+        global iteminfo
+        iteminfo = []
+        itemetape = rowinfo
         itemname = maZone.get()
         itematk = itemATK.get()
         itemdef = itemDEF.get()
+        iteminfo.extend([itemetape, itemname, itematk,itemdef])
 
     boutValider = Button(f2, text="Valider", command=valider)
     boutValider.pack(pady=10)
 
 
-def fenedit():
+def fenedit(): #pour acceder à l'éditeur
     clear()
     all_entries.clear()
     Label(f, text="Menu de l'éditeur de jeu", font=font1, bg="cyan").pack(padx=10, pady=10)
@@ -310,7 +356,7 @@ def fenedit():
     tuto1.place(relx=0.9, rely = 0.9, anchor="center")
 
 
-def menu():
+def menu(): #menu d'accueil principal
     clear()
     Label(f, text="Bienvenue dans TextGameEngine", font=font1, bg="cyan").pack(padx=4, pady=4, side=TOP)
     button1 = Button(f, command=fenjeu, text='Jouer à un jeu', image=playbook, compound=BOTTOM, width=150,
@@ -321,7 +367,6 @@ def menu():
     button2.pack(padx=5, pady=5)
     button1.place(relx=0.5, y=340, anchor="center")
     button2.place(relx=0.5, y=480, anchor="center")
-
 
 
 menu()
