@@ -1,8 +1,6 @@
 Bienvenue sur le tutoriel de text game engine :
 
-
 differentes parties
-
 
 description du programme de quoi ça parle 
 comment utiliser le jeu
@@ -11,8 +9,6 @@ comment creer une histoire
 comment reprendre l'écriture d'une histoire
 pour plus d'informations : 
 nous contacter, bino@j'ai mail.comme
-
-
 
 
 description du programme de quoi ça parle 

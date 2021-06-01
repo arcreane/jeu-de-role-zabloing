@@ -2,6 +2,7 @@ from tkinter import *
 from csv import *
 from tkinter import filedialog as fd
 from game import gamewindow
+import csv
 
 fenetre = Tk()
 fenetre.geometry("1920x1080")
@@ -218,7 +219,7 @@ def description(): #fenetre pour rentrer la description d'une étape
 
     Label(f2, text="Description", font=font1, bg="cyan").pack(padx=10, pady=10)
     zonedesc = Text(f2)
-    zonedesc.pack(pady = 10)
+    zonedesc.pack(pady = 10, )
     zonedesc.place(anchor = "center", relx = 0.5, rely= 0.5,height = "300", width = "400")
 
     def valider():
@@ -336,6 +337,8 @@ def fenedit(): #pour acceder à l'éditeur
     tuto1 = Button(f, bg="gold", text="Tutoriel", command=fentuto)
     tuto1.pack()
     tuto1.place(relx=0.9, rely = 0.9, anchor="center")
+
+
 
 def fenjeu(): #menu pour jouer ou editer une histoire
     clear()

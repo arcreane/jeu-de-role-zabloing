@@ -1,3 +1,23 @@
-1,"Vous vous réveillez dans une chambre noire, et vous voyez une porte avec de la lumiere derrière. Que voulez-vous faire ? ","Se rendormir","end","Ouvrir la porte","2",,
-2,"Vous ouvrez la porte et découvrez devant vous votre neveu disparu.","le saluer","3","le dropkick","end",,
-3,"vous etes arrives a la fin de cette histoire, merci!","quitter l'histoire","end",,,,
+1,"Vous vous réveillez dans une chambre noire, et vous voyez une porte avec de la lumiere derrière. Que voulez-vous faire ? ","Trouver une autre sortie","11","Ouvrir la porte","2",,
+2,"Vous ouvrez la porte et découvrez devant vous une lettre estampillée avec un sceau rouge sang.","Prendre la lettre et l'ouvrir","3","Ce n'est pas si important.Vous descendez l'escalier","4",,
+3,"Vous lisez la lettre. Il est écrit : Rendez vous demain a minuit sur la grande place. Viens seul.
+Décidement, c'est farfelu.","Aller prendre un verre d'eau en bas.","5","Retenir cette information et retourner dans la chambre","end",,
+4,"En descendant l'escalier, vous entendez un bruit etrange. Il semble venir de la porte d'entrée.","S'y diriger discretement","end","C'était surement votre ventre. Vous aller casser la croute.","5",,
+5,"Ce verre d'eau vous rafraichit bien.
+Vous regardez l'heure : il est 3h47.","Pourquoi s'arreter sur un verre ?
+Il y a du poulet dans le frigo","7","Après tout, vous etes quand meme fatigués.
+Vous allez vous recoucher","6",,
+6,"C'est l'heure d'un bon sommeil ! Vous mettez la couette et vous péparez a finir la nuit.
+Mais vous apercevez des yeux rouges dans votre chaussure...","JE VEUX JUSTE DORMIR C'EST BON LA,"end","Allumer la lumière(vite, j'ai peur, merci)","8",,
+7,"Grave erreur. Il n'y a plus de poulet dans le frigo. En plus de ca, le frigo vous tombe dessus.
+Il fallait investir dans des pieds plus solides.","Fin!","end",,,,
+8,"Vous courez allumer la lumiere,de peur qu'un monstre vicieux se soit glissé dans vos Jordans.
+Vous vous dirigez ensuite vers les chaussures","Lancer la chaussure par la fenètre (ok, pas bête)","9","Bruler la chaussure à l'essence (bof)","10",,
+9,"Dommage ! C'etait vraiment une idée débile au final. Le monstre s'accroche à votre bras et aspire votre âme","Ce jeu est trop dur","end",,,,
+10,"Une bonne chose de faite ! La paire de Jordans est foutue, mais votre vie est sauve.
+Vous pouvez maintenant vous offrir un sommeil bien mérité","ZZZZZZZZzzzzz","end",,,,
+11,"Non, sauter par la fenetre n'est pas une bonne idée. Vous êtes au 13e etage. Calmez-vous.","Ok ca va j'ai juste paniqué","1","Je sors d'un controle de Signaux et Systemes.
+Laissez moi mourir en paix","12",,
+12,"Signaux est systemes c'est trop dur. Vous faites un burn out et sautez par la fenetre.
+Mais, Tchoupi vous attend en bas et vous rattrape.
+Vous vous reveillez en sueur : tout cela n'était qu'un reve !","Oui mais j'ai quand meme contrôle de SS","end","ah bon cool, je vais dormir alors.","end",,o
