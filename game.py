@@ -31,9 +31,8 @@ def gamewindow():
             reader = csv.reader(f)
             biglist = list(reader)
     except FileNotFoundError :
-        showinfo("Pas de fichier","Vous n'avez pas selectionné de fichier.")
+        showinfo("Pas de fichier","Vous n'avez pas sélectionné de fichier.")
         fenetre2.withdraw()
-
 
 
     def display(etape): #gerer le end et quit et clear a chaqsue fois que le bouton est cliqué
@@ -47,15 +46,14 @@ def gamewindow():
             if lien1 == "end":
                 showinfo("GAME OVER", "Fin de la partie!")
                 fenetre2.destroy()
-
             else :
                 pass
+
         def endcheck2():
             global lien1
             if lien2 == "end":
                 showinfo("GAME OVER", "Fin de la partie!")
                 fenetre2.destroy()
-
             else :
                 pass
 
@@ -64,12 +62,12 @@ def gamewindow():
         choixuno = biglist[int(etape)-1][2]
         choixdos = biglist[int(etape)-1][4]
 
-
         descframe = Frame(fenetre2)
-        desclabel = Label(descframe, text = desc1)
-        desclabel.pack(padx = 20, pady = 20)
+        desclabel = Label(descframe, text=desc1)
+        desclabel.pack(padx=20, pady=20)
         descframe.pack()
-        descframe.place(relx = 0.5, rely = 0.4, anchor = "center")
+        descframe.place(relx=0.5, rely=0.4, anchor="center")
+
 
         choix1 = Button(fenetre2,text=choixuno, command = lambda:[endcheck1(), all_forget(), display(int(lien1))])
         choix1.pack(padx = 10, pady = 20)
@@ -87,8 +85,7 @@ def gamewindow():
             choix1.place(relx = 0.5, rely = 0.5)
 
         def all_forget():
-
-            desc1.destroy()
+            desclabel.destroy()
             choix1.destroy()
             choix2.destroy()
 
