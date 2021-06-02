@@ -4,6 +4,7 @@ import csv
 from tkinter import filedialog as fd
 
 def gamewindow():
+    global biglist
 
     fenetre2 = Tk()
     fenetre2.geometry("1300x800")
