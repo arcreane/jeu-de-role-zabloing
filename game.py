@@ -85,7 +85,7 @@ def gamewindow():
             choix1.place(relx = 0.5, rely = 0.5)
 
         def all_forget():
-            desclabel.destroy()
+            descframe.destroy()
             choix1.destroy()
             choix2.destroy()
 
