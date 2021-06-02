@@ -29,7 +29,7 @@ def fentuto():
     f3.configure(bg="teal")
     f3.pack(expand=TRUE, fill=BOTH)
 
-    file = open("tuto.txt") #ouvre le fichier txt et prends le contenu pour l'afficher
+    file = open("tuto.txt", encoding="utf-8-sig") #ouvre le fichier txt et prends le contenu pour l'afficher
     data8 = file.read()
     file.close()
     Results=Text(f3, height=400, width=800)

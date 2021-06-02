@@ -1,36 +1,45 @@
-Bienvenue sur le tutoriel de text game engine :
-
-differentes parties
-
-description du programme de quoi ça parle 
-comment utiliser le jeu
-
-comment creer une histoire
-comment reprendre l'écriture d'une histoire
-pour plus d'informations : 
-nous contacter, bino@j'ai mail.comme
+Bienvenue sur le tutoriel de TextGameEngine :
 
 
-description du programme de quoi ça parle 
+1°Description du programme
+2°Comment créer une histoire
+3°Comment jouer à un de vos jeux
+4°Le système de combat
 
-Bonjour et merci d'avoir choisi text game engine pour vous évader le temps d'un instant.
-Ce programme est une interface graphique permettant de créer ses propres histoires à l'aide d'une bibliothèque d'items fournie.
-Des centaines de possibilités sont réalisables et vous pouvez vous arreter en pleine conception pour la reprendre plus tard.
+------Pour plus d'informations :------
+Nous contacter à l'adresse tgegroup@gmail.com
 
 
-comment creer une histoire
+Description du programme :
 
-Pour créer une nouvelle histoire, rien de plus simple. Il vous suffit de cliquer sur le bouton éponyme.
+Bonjour et merci d'avoir choisi TextGameEngine pour vous évader le temps d'un instant.
+Ce programme est une interface graphique permettant de créer ses propres histoires à l'aide d'une
+interface simple, permettant d'associer monstres eet items dans une histoire passionante.
+Des centaines de possibilités sont réalisables et vous pouvez vous arrêter en pleine conception
+pour la reprendre plus tard.
+
+
+Comment créer une histoire :
+
+Pour créer une nouvelle histoire, rien de plus simple. Il vous suffit de cliquer sur le bouton dédié.
 Vous allez ensuite arriver sur une page d'édition.
-(expliquer page d'édition)
+Vous pouvez ensuite rentrer les informations de chaq étape dans les cases faites pour cela. N'oubliez
+pas de valider une fois que tout est terminé !
 
-vous pouvez aussi modifier votre histoire au moment où vous le souhaitez en appuyant sur le bouton "modifier une histoire"
+Vous pouvez aussi modifier votre histoire déjà créée au moment où vous le souhaitez en appuyant
+sur le bouton "modifier une histoire"
 
 
-Comment jouer à un de vos jeux 
+Comment jouer à un de vos jeux :
 
-Afin de jouer, il vous suffit de cliquer sur le bouton "jouer à un jeu". L'explorateur de fichier s'ouvre pour que vous puissiez choisir 
+Afin de jouer, il vous suffit de cliquer sur le bouton "jouer à un jeu". L'explorateur de fichier s'ouvre
+pour que vous puissiez choisir un des fichier .CSV associés à une histoire. Ensuite retournez sur la
+fenêtre de jeu qui sera apparue. Votre histoire est chargée ! Faites les bons choix et amusez-vous
+à découvrir toutes les fins possibles !
 
-Commandes du jeu 
 
-(fleches directionnelles, comment recup un objet...)
+Le système de combat :
+
+[work in progress]
+
+
