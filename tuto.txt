@@ -17,6 +17,9 @@ Ce programme est une interface graphique permettant de créer ses propres histoi
 interface simple, permettant d'associer monstres eet items dans une histoire passionante.
 Des centaines de possibilités sont réalisables et vous pouvez vous arrêter en pleine conception
 pour la reprendre plus tard.
+Une histoire est une suite de questions dont les réponses vous emmènent vers d'autres questions.
+L'Engine vous permet donc de d'inventer vos propres questions, en créant la description d'une situation,
+et deux réponses, en créant les choix et en les liant à la situation suivante.
 
 
 Comment créer une histoire :
